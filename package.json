@@ -1,0 +1,19 @@
+{
+  "name": "@midgar/i18n",
+  "version": "1.0.0-alpha.1.1",
+  "description": "A midgar plugin to add i18n-2 express module",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git"
+  },
+  "dependencies": {
+    "i18n-2": "^0.7.3",
+    "@midgar/midgar": "^1.0.0-alpha.1.3",
+    "@midgar/utils": "^1.0.0-alpha.1.2"
+  },
+  "devDependencies": {
+  },
+  "author": "Metais Fabien",
+  "license": "MIT"
+}
