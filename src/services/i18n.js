@@ -1,7 +1,7 @@
 import { assignRecursive, isObject } from '@midgar/utils'
 import path from 'path'
 import { vsprintf } from 'sprintf-js'
-import { cpus } from 'os'
+
 const serviceName = 'mid:i18n'
 
 /**
