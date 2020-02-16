@@ -1,5 +1,4 @@
 const path = require('path')
-const I18n = require('i18n-2')
 
 const Plugin = require('@midgar/midgar/plugin')
 const utils = require('@midgar/utils')
@@ -15,18 +14,6 @@ class MidgarI18n extends Plugin {
     this._dirKey = 'locales'
     //declare locales dirs
     this.pm.pluginDirs[this._dirKey] = 'locales'
-
-    this.locales = ['fr_FR', 'en_GB']
-    //create i18n instance
-    this.i18n = new I18n({
-      locales: this.locales
-    })
-
-    this.i18n.defaultLocale = 'fr_FR'
-    //disable dev mode for disable write file :'(
-    this.i18n.devMode = false
-    //locales object
-    this.i18n.locales = {}
 
     //bind initHttpServer event
     this.pm.on('initHttpServer', async () => {

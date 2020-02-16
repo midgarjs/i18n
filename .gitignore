@@ -2,4 +2,8 @@ node_modules/
 .history
 .idea/
 .vscode/
-docs/
+.nyc_output/
+.sonarlint/
+.mocha-report.xml
+coverage/
+reports/

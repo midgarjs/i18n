@@ -1,0 +1,4 @@
+{
+  "Hello-world !": "Hello world !",
+  "%s cat": { "singular": "%s cat", "plural": "%s cats"}
+}
