@@ -32,7 +32,11 @@ const initMidgar = async (suffix = null) => {
  * Test the I18n plugin
  */
 describe('I18n', function () {
-  afterEach(async () => {
+  before(async () => {
+    mid = await initMidgar()
+  })
+
+  after(async () => {
     await mid.stop()
     mid = null
   })
@@ -41,7 +45,6 @@ describe('I18n', function () {
    * Test if the plugin id load
    */
   it('Plugin', async () => {
-    mid = await initMidgar()
     // Test plugin instance
     const plugin = mid.pm.getPlugin('@midgar/i18n')
     expect(plugin).to.be.an.instanceof(I18nPlugin, 'Plugin is not an instance of I18nPlugin')
@@ -51,10 +54,9 @@ describe('I18n', function () {
   })
 
   /**
-   * Add a route and test a request
+   * Test translation
    */
-  it('__', async () => {
-    mid = await initMidgar()
+  it('translation', async () => {
     const i18nService = mid.getService('mid:i18n')
     expect(i18nService.__(HELLO_WORLD_MSG)).to.be.equals('Hello world !', 'Invalide default translation !')
     expect(i18nService.__(HELLO_WORLD_MSG, 'en-GB')).to.equals('Hello world !', 'Invalide en-GB translation !')
@@ -76,5 +78,9 @@ describe('I18n', function () {
     expect(i18nService.__(KAT_MSG, 'de-DE', 1)).to.equals('1 katze', 'Invalide de-DE singular translation !')
     expect(i18nService.__(KAT_MSG, 'de-DE', 2)).to.equals('2 katzen', 'Invalide de-DE plurial translation !')
     expect(i18nService.__(KAT_MSG, 'de-DE', 42)).to.equals('42 katzen', 'Invalide de-DE plurial translation !')
+
+    expect(i18nService.__('toto %s %s', null, 'test', 'other')).to.be.equals('toto test other', 'Invalide translation !')
+    expect(i18nService.__('%s dog and 1 %s', null, 1, 'cat')).to.be.equals('1 dog and 1 cat', 'Invalide translation !')
+    expect(i18nService.__('%s dog and 1 %s', null, 42, 'cat')).to.be.equals('42 dogs and 1 cat', 'Invalide translation !')
   })
 })

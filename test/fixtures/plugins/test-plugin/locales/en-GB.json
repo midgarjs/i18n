@@ -1,4 +1,5 @@
 {
   "Hello-world !": "Hello world !",
-  "%s cat": { "singular": "%s cat", "plural": "%s cats"}
+  "%s cat": { "singular": "%s cat", "plural": "%s cats"},
+  "%s dog and 1 %s": { "singular": "%s dog and 1 %s", "plural": "%s dogs and 1 %s"}
 }

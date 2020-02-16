@@ -89,6 +89,7 @@ class I18nService {
    * @private
    */
   _loadTranslationFile (file) {
+    this.mid.debug(`@midgar/i18n: load translation file: ${file.path}.`)
     // Get file extension
     const ext = path.extname(file.path)
 
@@ -161,8 +162,9 @@ class I18nService {
 
       // If translated message is singular
       if (typeof translation === 'string') {
-        if (args.length > 1) msg = vsprintf(translation, Array.prototype.slice.call(args, 2))
-        else msg = translation
+        if (args.length) {
+          msg = vsprintf(translation, args)
+        } else msg = translation
         // If translated msg is a plural object
       } else if (isObject(translation)) {
         msg = this._translateplural(msg, locale, translation, args)
